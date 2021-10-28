@@ -4,14 +4,15 @@ const IMGPATH = "https://image.tmdb.org/t/p/w1280";
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";    // Buscar json de pelicula
 // ---------------------------------
 
-// Asociacion de contenedores al html
+// Asociacion de contenedores en el html
 const main = document.getElementById('main');
 const form = document.getElementById('form');
 const buscador = document.getElementById("buscador");
 
-traerPeliculas(APIURL)
 
-// Traer a las peliculas desde la API, y posteriormente renderizarlas en el index
+// Traer las peliculas desde la API y llamar a la funcion de renderizado
+
+traerPeliculas(APIURL)
 
 async function traerPeliculas(url) {
 
@@ -20,6 +21,10 @@ async function traerPeliculas(url) {
 
     mostrarPeliculas(respuestaDatos.results);
 }
+
+
+// Renderizar peliculas en el index.html
+
 
 function mostrarPeliculas (peliculas) {
 
@@ -33,32 +38,62 @@ function mostrarPeliculas (peliculas) {
         const peliculaEl = document.createElement('div');
         peliculaEl.classList.add('pelicula');
 
-        peliculaEl.innerHTML = `
+        peliculaEl.innerHTML = `<button class="boton">Toca</button>
                                 <img class="pelicula-imagen" src="${IMGPATH + poster_path}" alt="${title}">
                                 <div class="pelicula-info">
                                     <h3 class="pelicula-h3">${title}</h3>
-                                    <span class="${asignarClaseRating(vote_average)}">${vote_average}</span>
+                                    <div class="span-container">
+                                        <span class="${asignarClaseRating(vote_average)}">${vote_average}</span>
+                                    </div>
                                 </div>
+                                <div class="overview">
+                                    <h3>${title}</h3>
+                                    <h4>Sinopsis:</h4>
+                                        ${overview}
+                                </div>
+                                
         `;
 
         main.appendChild(peliculaEl);
     });
+}
+
+
+// let botones = document.querySelector('boton');
+// botones.addEventListener('onclick', capturarDatos(pelicula));
+
+
+// Capturar datos y guardar en localStorage
+
+function capturarDatos (e) {                                                                              
+                                            
+    let peliculaInfo = [];
+    peliculaInfo.push(e);
+
+    console.log('Capturado');
+
+    localStorage.setItem('Datos-pelicula', JSON.stringify(peliculaInfo));
+    
 
 }
 
-// Asignar colores a las puntajes de las peliculabas basadas en su rating
+
+// Asignar colores a las puntajes de las peliculas basadas en su rating
 
 function asignarClaseRating(puntaje) {
 
-if (puntaje < 8) {
+if (puntaje >= 8) {
     return "verde";
     
 } else if (puntaje >= 5) {
-    return "amarillo";
+    return "naranja";
 
 } else {
     return "rojo";
 }}
+
+
+// Busqueda en la barra de search
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -68,10 +103,6 @@ form.addEventListener('submit', (e) => {
     if (busquedaUsuario) {
         traerPeliculas(SEARCHAPI + busquedaUsuario)
         buscador.value = '';
-    }
+    }  
 });
-
-
-
-
 
