@@ -1,5 +1,5 @@
 // Informacion y urls de las APIs
-const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+const APIURL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=2";
 const IMGPATH = "https://image.tmdb.org/t/p/w1280";
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";    // Buscar json de pelicula
 // ---------------------------------
@@ -25,7 +25,6 @@ async function traerPeliculas(url) {
 
 // Renderizar peliculas en el index.html
 
-
 function mostrarPeliculas (peliculas) {
 
     // Limpiar main
@@ -38,7 +37,7 @@ function mostrarPeliculas (peliculas) {
         const peliculaEl = document.createElement('div');
         peliculaEl.classList.add('pelicula');
 
-        peliculaEl.innerHTML = `<button class="boton">Toca</button>
+        peliculaEl.innerHTML = `
                                 <img class="pelicula-imagen" src="${IMGPATH + poster_path}" alt="${title}">
                                 <div class="pelicula-info">
                                     <h3 class="pelicula-h3">${title}</h3>
@@ -53,28 +52,9 @@ function mostrarPeliculas (peliculas) {
                                 </div>
                                 
         `;
-
+    
         main.appendChild(peliculaEl);
     });
-}
-
-
-// let botones = document.querySelector('boton');
-// botones.addEventListener('onclick', capturarDatos(pelicula));
-
-
-// Capturar datos y guardar en localStorage
-
-function capturarDatos (e) {                                                                              
-                                            
-    let peliculaInfo = [];
-    peliculaInfo.push(e);
-
-    console.log('Capturado');
-
-    localStorage.setItem('Datos-pelicula', JSON.stringify(peliculaInfo));
-    
-
 }
 
 
@@ -98,11 +78,14 @@ if (puntaje >= 8) {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const busquedaUsuario = buscador.value;
+    let busquedaUsuario = buscador.value;
 
     if (busquedaUsuario) {
         traerPeliculas(SEARCHAPI + busquedaUsuario)
         buscador.value = '';
-    }  
+    } else if (busquedaUsuario = '') {
+        traerPeliculas(APIURL)
+    } else {
+        traerPeliculas(APIURL)
+    }
 });
-
