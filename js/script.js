@@ -50,7 +50,6 @@ function mostrarPeliculas (peliculas) {
                                     <h4>Sinopsis:</h4>
                                         ${overview}
                                 </div>
-                                
         `;
     
         main.appendChild(peliculaEl);
