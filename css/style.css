@@ -160,7 +160,13 @@ header #header-h1:hover {
   color: #eb5e28;
 }
 
-header .barra-busqueda {
+header #buscadores-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header #buscadores-container .barra-busqueda {
   font-family: inherit;
   padding: 0.5rem 1rem;
   border: 2px solid #22254b;
@@ -172,55 +178,73 @@ header .barra-busqueda {
   transition: 0.5s;
 }
 
-header .barra-busqueda:hover::before {
+header #buscadores-container .barra-busqueda:hover::before {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-box-shadow: 0 0 40px #eb5e28;
           box-shadow: 0 0 40px #eb5e28;
 }
 
-header .barra-busqueda:hover {
+header #buscadores-container .barra-busqueda:hover {
   color: #eb5e28;
   -webkit-box-shadow: 0 0 20px #eb5e28;
           box-shadow: 0 0 20px #eb5e28;
 }
 
-header .barra-busqueda::-webkit-input-placeholder {
+header #buscadores-container .barra-busqueda::-webkit-input-placeholder {
   color: white;
 }
 
-header .barra-busqueda:-ms-input-placeholder {
+header #buscadores-container .barra-busqueda:-ms-input-placeholder {
   color: white;
 }
 
-header .barra-busqueda::-ms-input-placeholder {
+header #buscadores-container .barra-busqueda::-ms-input-placeholder {
   color: white;
 }
 
-header .barra-busqueda::placeholder {
+header #buscadores-container .barra-busqueda::placeholder {
   color: white;
 }
 
-header .barra-busqueda:focus {
+header #buscadores-container .barra-busqueda:focus {
   outline: none;
   background-color: white;
   border: white;
 }
 
-header .barra-busqueda:focus::-webkit-input-placeholder {
+header #buscadores-container .barra-busqueda:focus::-webkit-input-placeholder {
   color: #ce2121;
 }
 
-header .barra-busqueda:focus:-ms-input-placeholder {
+header #buscadores-container .barra-busqueda:focus:-ms-input-placeholder {
   color: #ce2121;
 }
 
-header .barra-busqueda:focus::-ms-input-placeholder {
+header #buscadores-container .barra-busqueda:focus::-ms-input-placeholder {
   color: #ce2121;
 }
 
-header .barra-busqueda:focus::placeholder {
+header #buscadores-container .barra-busqueda:focus::placeholder {
   color: #ce2121;
+}
+
+header #buscadores-container #boton-buscar {
+  color: white;
+  border: 2px solid red;
+  padding: 5px;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10x;
+  background-color: transparent;
+}
+
+header #buscadores-container #boton-buscar:active {
+  background-color: white;
+  color: black;
+  opacity: 80%;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
 }
 
 header .git-link {
@@ -229,7 +253,7 @@ header .git-link {
 
 header .git-link #git-icon {
   max-height: 60px;
-  width: 4em;
+  width: 4rem;
   padding: 0.2em;
   background: whitesmoke;
   border-radius: 50%;
@@ -265,5 +289,11 @@ header .git-link #git-icon:hover {
   -webkit-box-shadow: 0 0 20px #eb5e28;
           box-shadow: 0 0 20px #eb5e28;
   text-shadow: 0 0 20px #eb5e28;
+}
+
+@media screen and (max-width: 425) {
+  header .git-link #git-icon {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */

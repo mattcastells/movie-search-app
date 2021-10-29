@@ -26,47 +26,66 @@ header {
     }
   }
 
-  .barra-busqueda {
-    font-family: inherit;
-    padding: 0.5rem 1rem;
-    border: 2px solid #22254b;
-    border-radius: 50px;
-    background-color: transparent;
-    font-size: 1.2rem;
-    width: 100%;
-    transition: 0.5s;
+  #buscadores-container {
+    display: flex;
+    .barra-busqueda {
+      font-family: inherit;
+      padding: 0.5rem 1rem;
+      border: 2px solid #22254b;
+      border-radius: 50px;
+      background-color: transparent;
+      font-size: 1.2rem;
+      width: 100%;
+      transition: 0.5s;
 
-    &:hover::before {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px #eb5e28;
-    }
+      &:hover::before {
+        transform: scale(1.1);
+        box-shadow: 0 0 40px #eb5e28;
+      }
 
-    &:hover {
-      color: #eb5e28;
-      box-shadow: 0 0 20px #eb5e28;
-    }
-
-    &::placeholder {
-      color: white;
-    }
-
-    &:focus {
-      outline: none;
-      background-color: white;
-      border: white;
+      &:hover {
+        color: #eb5e28;
+        box-shadow: 0 0 20px #eb5e28;
+      }
 
       &::placeholder {
-        color: rgb(206, 33, 33);
+        color: white;
+      }
+
+      &:focus {
+        outline: none;
+        background-color: white;
+        border: white;
+
+        &::placeholder {
+          color: rgb(206, 33, 33);
+        }
+      }
+    }
+
+    #boton-buscar {
+      color: white;
+      border: 2px solid red;
+      padding: 5px;
+      border-radius: 50%;
+      margin-left: 10px;
+      margin-right: 10x;
+      background-color: transparent;
+
+      &:active {
+        background-color: white;
+        color: black;
+        opacity: 80%;
+        transform: translateY(4px);
       }
     }
   }
-
   .git-link {
     text-decoration: none;
 
     #git-icon {
       max-height: 60px;
-      width: 4em;
+      width: 4rem;
       padding: 0.2em;
       background: whitesmoke;
       border-radius: 50%;
@@ -92,6 +111,16 @@ header {
         color: #eb5e28;
         box-shadow: 0 0 20px #eb5e28;
         text-shadow: 0 0 20px #eb5e28;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425) {
+  header {
+    .git-link {
+      #git-icon {
+        display: none;
       }
     }
   }
