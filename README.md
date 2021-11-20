@@ -1,5 +1,5 @@
 # movie-search-app
-Aplicación para buscar películas, ver sus sinopsis, y sus puntajes generales. Proyecto final realizado para el curso de Javascript de Coderhouse.
+Aplicación para buscar películas, ver sus sinopsis, y sus puntajes generales.
 
 *Requiere ser hosteado por Live Server para su funcionamiento*
 
